@@ -12,3 +12,17 @@ export async function getPosts(limit =10, skip=0) {
      const data = await response.json();
     return data;
 }
+
+//obtener 1 post 
+export async function getPostById(id) {
+  const response = await fetch(`${BASE_URL}/${id}`);
+  if(!response.ok){
+    throw new Error("Error al obtener el post");
+
+  }
+  
+  return await response.json();
+
+
+  
+}

@@ -2,6 +2,8 @@
 
 import { getPosts } from "./api/postsApi.js";
 import { renderPosts } from "./modules/renderPosts.js";
+import { getPostById } from "./api/postsApi.js";
+import { renderDetail } from "./modules/renderDetail.js";
 
 async function initHome() {
     try{
@@ -18,3 +20,26 @@ if (window.location.pathname.includes("index.html")|| window.location.pathname =
     initHome();
 }
 console.log("App cargando...");
+
+
+async function initDetail() {
+    const params =new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (!id) return;
+
+    try {
+        const post = await getPostById(id);
+        renderDetail(post);
+
+    }catch (error){
+        console.error(error);
+    
+    }
+    
+    //detectar si se esta en detail.htm
+    if(window.location.pathname.includes("detail.htm")){
+        initDetail();
+    }
+    
+}
