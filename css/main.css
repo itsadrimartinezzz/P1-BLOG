@@ -28,3 +28,37 @@ nav a{
 nav a:hover {
   text-decoration: underline;
 }
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 15px 30px;
+
+}
+
+.logo{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+.nav-links{
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+
+}
+
+.nav-links a:hover{
+    color: #007bff;
+}
