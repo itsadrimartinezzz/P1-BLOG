@@ -10,18 +10,24 @@ export function renderPosts(posts){
         
         card.classList.add("post-card"); 
 
-        //se crea una tarjeta con titilo, resumen y btn 
-         card.innerHTML = `
-      <h3>${post.title}</h3>
-      <p>${post.body.substring(0, 100)}...</p>
-      <button data-id="${post.id}">Ver más</button>
-    `;
-    card.querySelector("button").addEventListener("click", () => {
-    const id = post.id;
-     window.location.href = `pages/detail.html?id=${id}`;
-    });
-    container.appendChild(card);
+        const imageUrl=`https://picsum.photos/200/300?random=${post.id}`;
         
-    });
+    
+        //se crea una tarjeta con titilo, resumen imagen y btn 
+       card.innerHTML = `
+  <img src="${imageUrl}" alt="post image">
+  <h3>${post.title}</h3>
+  <p>${post.body.substring(0, 80)}...</p>
+  <button data-id="${post.id}">Ver más</button>
+`;
+
+// evento click
+card.querySelector("button").addEventListener("click", () => {
+  window.location.href = `pages/detail.html?id=${post.id}`;
+});
+
+container.appendChild(card);
+
+ });
 }
 
