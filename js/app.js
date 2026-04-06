@@ -4,6 +4,7 @@ import { getPosts } from "./api/postsApi.js";
 import { renderPosts } from "./modules/renderPosts.js";
 import { getPostById } from "./api/postsApi.js";
 import { renderDetail } from "./modules/renderDetail.js";
+import { getPagination, nextPage, prevPage, getCurrentPage } from "./modules/pagination.js";
 
 async function initHome() {
     try{
