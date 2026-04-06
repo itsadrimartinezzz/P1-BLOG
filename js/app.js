@@ -6,13 +6,40 @@ import { getPostById } from "./api/postsApi.js";
 import { renderDetail } from "./modules/renderDetail.js";
 import { getPagination, nextPage, prevPage, getCurrentPage } from "./modules/pagination.js";
 
-async function initHome() {
+async function loadPosts() {
     try{
-        const data = await getPosts();
+        const {limit, skip} = getPagination();
+        const data = await getPosts(limit, skip);
+
         renderPosts(data.posts);
+
+
+        //numero de pags (actualizar)
+
+        const pageNumber = document.getElementById("page-number");
+        if (pageNumber){
+            pageNumber.textContent = getCurrentPage();
+
+        }
+
     } catch (error){
         console.error(error);
-    };
+    }
+    
+    
+}
+async function initHome() {
+    loadPosts();
+
+    document.getElementById("next-btn").addEventListener("click", () =>{
+        nextPage();
+        loadPosts();
+    });
+
+    document.getElementById("prev-btn").addEventListener("click", () => {
+        prevPage();
+        loadPosts();
+    });
     
 }
 

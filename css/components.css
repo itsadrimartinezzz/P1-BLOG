@@ -1,0 +1,15 @@
+/* cards*/
+.post-card{
+    background: white;
+    padding: 16px;
+    margin: 16px auto;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+
+}
+.post-card:hover{
+    transform: scale(1.02);
+}
+
