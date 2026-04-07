@@ -28,6 +28,23 @@ Desarrollar una aplicación web dinámica aplicando los siguientes conceptos:
 * CSS
 * JavaScript
 
+### Detalle técnico adicional
+
+Además de las tecnologías base, el proyecto hace uso de:
+
+- DummyJSON API para la obtención de publicaciones
+- LocalStorage para almacenar publicaciones creadas por el usuario
+- JavaScript modular (ES Modules) para organizar la lógica del sistema
+
+### Organización del código
+
+El proyecto se estructura de forma modular para separar responsabilidades:
+
+- `js/api/` → manejo de consumo de API
+- `js/modules/` → lógica principal (renderizado, filtros, formularios)
+- `js/utils/` → utilidades como validaciones
+- `pages/` → vistas adicionales del sitio
+
 ## Estructura del proyecto
 
 ```bash
