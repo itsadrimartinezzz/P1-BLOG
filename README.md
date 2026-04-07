@@ -93,10 +93,6 @@ The application design aims to provide a clear, simple, and organized experience
 Additionally, validations and feedback messages were included to guide users during their interaction with the system.
 
 
-## Current Project Status
-
-The project has reached a functional state that fulfills the main requirements, including API consumption, post creation, filtering, and navigation between views.
-
 ## Conclusion
 
 This project represents a practical application of the knowledge acquired during the course, integrating technical concepts and good web development practices. It also helped strengthen teamwork and code organization using Git.
