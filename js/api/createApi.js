@@ -1,9 +1,10 @@
 export function savePost(newPost) {
   const savedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
-  const safePosts = Array.isArray(savedPosts) ? savedPosts : [];
+  const posts = Array.isArray(savedPosts) ? savedPosts : [];
 
-  safePosts.unshift(newPost);
-  localStorage.setItem("blogPosts", JSON.stringify(safePosts));
+  posts.unshift(newPost);
+  localStorage.setItem("blogPosts", JSON.stringify(posts));
 
   return newPost;
 }
+

@@ -7,38 +7,16 @@ const authorInput = document.getElementById("author");
 const tagsInput = document.getElementById("tags");
 const messageBox = document.getElementById("form-message");
 
-function showMessage(message, type = "success") {
+function showMessage(message, type) {
   if (!messageBox) return;
-
   messageBox.textContent = message;
   messageBox.className = `form-message ${type}`;
 }
 
 function clearMessage() {
   if (!messageBox) return;
-
   messageBox.textContent = "";
   messageBox.className = "form-message";
-}
-
-function validateForm(title, body, author) {
-  if (!title || !body || !author) {
-    return "Please complete all required fields.";
-  }
-
-  if (title.trim().length < 4) {
-    return "The title must have at least 4 characters.";
-  }
-
-  if (body.trim().length < 10) {
-    return "The content must have at least 10 characters.";
-  }
-
-  if (author.trim().length < 2) {
-    return "The author must have at least 2 characters.";
-  }
-
-  return "";
 }
 
 if (form) {
@@ -49,12 +27,25 @@ if (form) {
     const title = titleInput.value.trim();
     const body = bodyInput.value.trim();
     const author = authorInput.value.trim();
-    const tagsText = tagsInput ? tagsInput.value.trim() : "";
+    const tagsText = tagsInput.value.trim();
 
-    const validationError = validateForm(title, body, author);
+    if (!title || !body || !author) {
+      showMessage("All fields are required.", "error");
+      return;
+    }
 
-    if (validationError) {
-      showMessage(validationError, "error");
+    if (title.length < 4) {
+      showMessage("Title must be at least 4 characters.", "error");
+      return;
+    }
+
+    if (body.length < 10) {
+      showMessage("Content must be at least 10 characters.", "error");
+      return;
+    }
+
+    if (author.length < 2) {
+      showMessage("Author must be at least 2 characters.", "error");
       return;
     }
 
@@ -76,6 +67,6 @@ if (form) {
 
     setTimeout(() => {
       window.location.href = "../index.html";
-    }, 900);
+    }, 700);
   });
 }

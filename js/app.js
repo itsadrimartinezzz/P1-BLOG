@@ -55,26 +55,15 @@ function mergePosts(apiPosts, localPosts) {
   const normalizedApi = apiPosts.map(normalizeApiPost);
   const normalizedLocal = localPosts.map(normalizeLocalPost);
 
-  const merged = [...normalizedLocal, ...normalizedApi];
-  const uniquePosts = [];
-  const usedIds = new Set();
-
-  merged.forEach((post) => {
-    if (!usedIds.has(post.id)) {
-      usedIds.add(post.id);
-      uniquePosts.push(post);
-    }
-  });
-
-  return uniquePosts;
+  return [...normalizedLocal, ...normalizedApi];
 }
 
 function updatePaginationControls() {
   const totalPages = getTotalPages(filteredPosts, POSTS_LIMIT);
 
-  pageNumber.textContent = currentPage;
-  prevBtn.disabled = currentPage === 1;
-  nextBtn.disabled = currentPage === totalPages || filteredPosts.length === 0;
+  if (pageNumber) pageNumber.textContent = currentPage;
+  if (prevBtn) prevBtn.disabled = currentPage === 1;
+  if (nextBtn) nextBtn.disabled = currentPage === totalPages || filteredPosts.length === 0;
 }
 
 function updateView() {
