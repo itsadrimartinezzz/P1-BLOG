@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="../css/main.css" />
   <link rel="stylesheet" href="../css/components.css" />
   <link rel="stylesheet" href="../css/responsive.css" />
-  <title>Detalle de publicación | BlogLab</title>
+  <title>Categorías | BlogLab</title>
 </head>
 <body>
   <nav class="navbar">
@@ -21,20 +21,38 @@
     <div class="nav-links">
       <a href="../index.html">Inicio</a>
       <a href="./create.html">Crear</a>
-      <a href="./categories.html">Categorías</a>
+      <a href="./categories.html" class="active">Categorías</a>
     </div>
   </nav>
 
   <main class="page-shell">
     <section class="home-intro">
-      <h1 class="home-intro__title">Post detail</h1>
+      <h1 class="home-intro__title">Popular categories</h1>
     </section>
 
     <section class="content-panel">
-      <div id="post-detail"></div>
+      <div class="category-grid">
+        <article class="category-card">
+          <h2>History</h2>
+          <p>Stories, events and reflections from the past.</p>
+        </article>
+
+        <article class="category-card">
+          <h2>Crime</h2>
+          <p>Mystery cases, investigations and dark narratives.</p>
+        </article>
+
+        <article class="category-card">
+          <h2>Mystery</h2>
+          <p>Unexpected twists and content full of suspense.</p>
+        </article>
+
+        <article class="category-card">
+          <h2>Love</h2>
+          <p>Personal stories, emotions and heartfelt writing.</p>
+        </article>
+      </div>
     </section>
   </main>
-
-  <script type="module" src="../js/modules/renderDetails.js"></script>
 </body>
 </html>

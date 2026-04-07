@@ -1,27 +1,9 @@
-//paginacion para el blog 
-//modulo
-
-let currentPage=1;
-const limit = 10;
-
-export function getPagination(){
-    const skip = (currentPage - 1) * limit;
-    return {limit, skip};
-
+export function paginatePosts(posts, currentPage, postsPerPage) {
+  const start = (currentPage - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  return posts.slice(start, end);
 }
 
-export function nextPage(){
-    currentPage++;
-
-}
-
-export function prevPage(){
-    if(currentPage > 1){
-        currentPage--;
-    }
-}
-
-export function getCurrentPage(){
-    return currentPage;
-    
+export function getTotalPages(posts, postsPerPage) {
+  return Math.max(1, Math.ceil(posts.length / postsPerPage));
 }

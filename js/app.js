@@ -1,97 +1,181 @@
-//inicializar la pag. principal cargando y mostrando posts 
-import { getPosts } from "./api/postsApi.js";
+import { getAllPosts } from "./api/postsApi.js";
+import { filterPosts } from "./modules/filters.js";
+import { paginatePosts, getTotalPages } from "./modules/pagination.js";
 import { renderPosts } from "./modules/renderPosts.js";
-import { getPostById } from "./api/postsApi.js";
-import { renderDetail } from "./modules/renderDetail.js";
-import { getPagination, nextPage, prevPage, getCurrentPage } from "./modules/pagination.js";
+import { POSTS_LIMIT } from "./api/config.js";
 
+const postsContainer = document.getElementById("posts-container");
+const searchInput = document.getElementById("search-input");
+const userFilter = document.getElementById("user-filter");
+const tagFilter = document.getElementById("tag-filter");
+const clearFiltersBtn = document.getElementById("clear-filters");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const pageNumber = document.getElementById("page-number");
+const popularTags = document.querySelectorAll(".tag-pill");
 
+let allPosts = [];
+let filteredPosts = [];
+let currentPage = 1;
 
-async function loadPosts() {
-  try {
-    const { limit, skip } = getPagination();
+const currentFilters = {
+  search: "",
+  userId: "",
+  tag: ""
+};
 
-    const filters = {
-      search: document.getElementById("search-input")?.value.trim() || "",
-      userId: document.getElementById("user-filter")?.value.trim() || "",
-      tag:    document.getElementById("tag-filter")?.value.trim() || "",
-    };
+function getLocalPosts() {
+  const savedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+  return Array.isArray(savedPosts) ? savedPosts : [];
+}
 
-    const data = await getPosts(limit, skip, filters);
-    renderPosts(data.posts); 
+function normalizeApiPost(post) {
+  return {
+    id: String(post.id),
+    title: post.title || "Untitled post",
+    body: post.body || "No content available.",
+    author: post.userId ? `User ${post.userId}` : "Unknown author",
+    userId: post.userId || "",
+    tags: Array.isArray(post.tags) ? post.tags : []
+  };
+}
 
-    const pageNumber = document.getElementById("page-number");
-    if (pageNumber) pageNumber.textContent = getCurrentPage();
+function normalizeLocalPost(post) {
+  return {
+    id: String(post.id),
+    title: post.title || "Untitled post",
+    body: post.body || post.content || "No content available.",
+    author: post.author || "Unknown author",
+    userId: post.userId || "",
+    tags: Array.isArray(post.tags) ? post.tags : []
+  };
+}
 
-  } catch (error) {
-    console.error(error);
+function mergePosts(apiPosts, localPosts) {
+  const normalizedApi = apiPosts.map(normalizeApiPost);
+  const normalizedLocal = localPosts.map(normalizeLocalPost);
+
+  const merged = [...normalizedLocal, ...normalizedApi];
+  const uniquePosts = [];
+  const usedIds = new Set();
+
+  merged.forEach((post) => {
+    if (!usedIds.has(post.id)) {
+      usedIds.add(post.id);
+      uniquePosts.push(post);
+    }
+  });
+
+  return uniquePosts;
+}
+
+function updatePaginationControls() {
+  const totalPages = getTotalPages(filteredPosts, POSTS_LIMIT);
+
+  pageNumber.textContent = currentPage;
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages || filteredPosts.length === 0;
+}
+
+function updateView() {
+  filteredPosts = filterPosts(allPosts, currentFilters);
+
+  const totalPages = getTotalPages(filteredPosts, POSTS_LIMIT);
+
+  if (currentPage > totalPages) {
+    currentPage = 1;
   }
+
+  const visiblePosts = paginatePosts(filteredPosts, currentPage, POSTS_LIMIT);
+  renderPosts(visiblePosts, postsContainer);
+  updatePaginationControls();
 }
 
-async function initHome() {
-  loadPosts();
-
-  document.getElementById("next-btn").addEventListener("click", () => {
-    nextPage();
-    loadPosts();
-  });
-
-  document.getElementById("prev-btn").addEventListener("click", () => {
-    prevPage();
-    loadPosts();
-  });
-
-  // Filtros de texto
-  document.getElementById("search-input").addEventListener("input", loadPosts);
-  document.getElementById("user-filter").addEventListener("input", loadPosts);
-  document.getElementById("tag-filter").addEventListener("input", loadPosts);
-
-  // botón limpiar 
-  document.getElementById("clear-filters")?.addEventListener("click", () => {
-    document.getElementById("search-input").value = "";
-    document.getElementById("user-filter").value = "";
-    document.getElementById("tag-filter").value = "";
-    document.querySelectorAll(".tag-pill").forEach(p => p.classList.remove("active"));
-    document.querySelector('.tag-pill[data-tag=""]')?.classList.add("active");
-    loadPosts();
-  });
-
-  //pills de tags populares 
-  document.querySelectorAll(".tag-pill").forEach(pill => {
-    pill.addEventListener("click", function () {
-      document.querySelectorAll(".tag-pill").forEach(p => p.classList.remove("active"));
-      this.classList.add("active");
-      document.getElementById("tag-filter").value = this.dataset.tag;
-      loadPosts();
-    });
+function setActiveTag(selectedTag) {
+  popularTags.forEach((tag) => {
+    tag.classList.toggle("active", tag.dataset.tag === selectedTag);
   });
 }
 
-if (window.location.pathname.includes("index.html") || window.location.pathname === "/") {
-  initHome();
+async function initApp() {
+  const apiPosts = await getAllPosts();
+  const localPosts = getLocalPosts();
+
+  allPosts = mergePosts(apiPosts, localPosts);
+  filteredPosts = [...allPosts];
+  updateView();
 }
 
-console.log("App cargando...");
-
-async function initDetail() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  if (!id) return;
-
-  try {
-    const post = await getPostById(id);
-    renderDetail(post);
-  } catch (error) {
-    console.error(error);
-  }
+if (searchInput) {
+  searchInput.addEventListener("input", (event) => {
+    currentFilters.search = event.target.value;
+    currentPage = 1;
+    updateView();
+  });
 }
 
-if (window.location.pathname.includes("detail.html")) {
-  initDetail();
+if (userFilter) {
+  userFilter.addEventListener("input", (event) => {
+    currentFilters.userId = event.target.value;
+    currentPage = 1;
+    updateView();
+  });
 }
 
-import { setupForm } from "./modules/form.js";
-
-if (window.location.pathname.includes("create.html")) {
-  setupForm();
+if (tagFilter) {
+  tagFilter.addEventListener("input", (event) => {
+    currentFilters.tag = event.target.value;
+    currentPage = 1;
+    setActiveTag("");
+    updateView();
+  });
 }
+
+popularTags.forEach((tag) => {
+  tag.addEventListener("click", () => {
+    const selectedTag = tag.dataset.tag || "";
+    currentFilters.tag = selectedTag;
+    if (tagFilter) tagFilter.value = selectedTag;
+    currentPage = 1;
+    setActiveTag(selectedTag);
+    updateView();
+  });
+});
+
+if (clearFiltersBtn) {
+  clearFiltersBtn.addEventListener("click", () => {
+    currentFilters.search = "";
+    currentFilters.userId = "";
+    currentFilters.tag = "";
+
+    if (searchInput) searchInput.value = "";
+    if (userFilter) userFilter.value = "";
+    if (tagFilter) tagFilter.value = "";
+
+    currentPage = 1;
+    setActiveTag("");
+    updateView();
+  });
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      updateView();
+    }
+  });
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    const totalPages = getTotalPages(filteredPosts, POSTS_LIMIT);
+
+    if (currentPage < totalPages) {
+      currentPage++;
+      updateView();
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initApp);

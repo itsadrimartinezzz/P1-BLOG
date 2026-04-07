@@ -1,24 +1,23 @@
-//filtros 
+export function filterPosts(posts, filters) {
+  const searchText = filters.search.trim().toLowerCase();
+  const tagText = filters.tag.trim().toLowerCase();
+  const userId = filters.userId.trim();
 
-export function applyFilters(posts) {
-  const searchInput = document.getElementById("search-input");
-  const userInput = document.getElementById("user-filter");
-  const tagInput = document.getElementById("tag-filter");
-
-  const search = searchInput ? searchInput.value.toLowerCase() : "";
-  const user = userInput ? userInput.value : "";
-  const tag = tagInput ? tagInput.value.toLowerCase() : "";
-
-  return posts.filter(post => {
+  return posts.filter((post) => {
     const matchesSearch =
-      post.title.toLowerCase().includes(search) ||
-      post.body.toLowerCase().includes(search);
+      !searchText ||
+      post.title.toLowerCase().includes(searchText) ||
+      post.body.toLowerCase().includes(searchText);
 
     const matchesUser =
-      user === "" || post.userId == user;
+      !userId ||
+      String(post.userId).includes(userId) ||
+      String(post.author).toLowerCase().includes(userId.toLowerCase());
 
     const matchesTag =
-      tag === "" || post.tags.some(t => t.toLowerCase().includes(tag));
+      !tagText ||
+      (Array.isArray(post.tags) &&
+        post.tags.some((tag) => tag.toLowerCase().includes(tagText)));
 
     return matchesSearch && matchesUser && matchesTag;
   });

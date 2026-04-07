@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <title>Create post | BlogLab</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">
+        <span class="brand-title">BlogLab</span>
+        <span class="brand-subtitle">Adriana & Mishell</span>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="./create.html" class="active">Crear</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="home-intro">
+      <h1 class="home-intro__title">Create a new post</h1>
+    </section>
+
+    <section class="content-panel">
+      <form id="create-post-form" class="create-form">
+        <input type="text" id="title" placeholder="Title" />
+        <textarea id="body" placeholder="Write your post..."></textarea>
+        <input type="text" id="author" placeholder="Author" />
+        <input type="text" id="tags" placeholder="Tags separated by commas" />
+        <button type="submit">Publish post</button>
+        <p id="form-message" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="../js/modules/form.js"></script>
+</body>
+</html>

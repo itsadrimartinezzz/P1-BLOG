@@ -1,17 +1,9 @@
-import { API_BASE_URL } from "./config.js";
+export function savePost(newPost) {
+  const savedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+  const safePosts = Array.isArray(savedPosts) ? savedPosts : [];
 
-const BASE_URL = `${API_BASE_URL}/posts`;
+  safePosts.unshift(newPost);
+  localStorage.setItem("blogPosts", JSON.stringify(safePosts));
 
-export async function createPost(postData) {
-  const response = await fetch(`${BASE_URL}/add`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(postData),
-  });
-
-  if (!response.ok) throw new Error("Error al crear el post");
-
-  return await response.json();
+  return newPost;
 }
