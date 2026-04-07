@@ -120,3 +120,23 @@
   border-color: #222;
   color: white;
 }
+
+#filters input {
+  transition: all 0.2s ease;
+}
+
+#filters input:focus {
+  outline: none;
+  border-color: #4b403d;
+  box-shadow: 0 0 0 2px rgba(75, 64, 61, 0.1);
+}
+
+.tag-pill {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.tag-pill:hover {
+  background: #4b403d;
+  color: white;
+}
