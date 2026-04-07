@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-    <main class="page-shell">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,13 +8,15 @@
   <link rel="stylesheet" href="css/responsive.css" />
   <title>BlogLab</title>
 </head>
+
 <body>
+
   <nav class="navbar">
     <div class="nav-brand">
       <div class="brand-mark"></div>
       <div class="brand-text">
         <span class="brand-title">BlogLab</span>
-        <span class="brand-subtitle">Adriana & Mishell </span>
+        <span class="brand-subtitle">Adriana & Mishell</span>
       </div>
     </div>
 
@@ -27,21 +27,22 @@
     </div>
   </nav>
 
-
-   <section class="home-intro">
-     <h1 class="home-intro__title">Explore your creativity. Keep your mind active.</h1>
-   </section>
-
   <main class="page-shell">
+
+    <section class="home-intro">
+      <h1 class="home-intro__title">
+        Explore your creativity. Keep your mind active.
+      </h1>
+    </section>
+
     <section class="content-panel">
+
       <div id="filters">
         <input type="text" id="search-input" placeholder="Buscar publicaciones..." />
         <input type="number" id="user-filter" placeholder="Autor ID" min="1" />
         <input type="text" id="tag-filter" placeholder="Tag" />
         <button id="clear-filters">Limpiar</button>
       </div>
-
-      
 
       <div id="popular-tags">
         <span class="tag-pill active" data-tag="">Todos</span>
@@ -58,9 +59,12 @@
         <span id="page-number">1</span>
         <button id="next-btn">Siguiente</button>
       </div>
+
     </section>
+
   </main>
 
   <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
