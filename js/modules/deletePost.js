@@ -3,7 +3,7 @@ export function initDeleteButton(post, savedPosts) {
     const id = post.id;
     const isLocal = savedPosts.some(p => String(p.id) === String(id));
 
-    // 🟡 Caso 1: post local
+    // post local
     if (isLocal) {
       const updated = savedPosts.filter(p => String(p.id) !== String(id));
       localStorage.setItem("blogPosts", JSON.stringify(updated));
@@ -12,7 +12,7 @@ export function initDeleteButton(post, savedPosts) {
       return;
     }
 
-    // 🔵 Caso 2: post de API (simulado)
+    // post api simulado
     try {
       const response = await fetch(`https://dummyjson.com/posts/${id}`, {
         method: "DELETE"

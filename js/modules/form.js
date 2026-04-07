@@ -1,5 +1,5 @@
 import { savePost } from "../api/createApi.js";
-import { validatePost } from "./validators.js";
+import { validatePost } from "../utils/validators.js";
 
 const form = document.getElementById("create-post-form");
 const titleInput = document.getElementById("title");
