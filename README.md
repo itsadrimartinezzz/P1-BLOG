@@ -1,51 +1,51 @@
 # P1 - Blog Web
 
-## Descripción
+## Description
 
-Este proyecto consiste en el desarrollo de una aplicación web tipo blog que permite visualizar publicaciones, consultar detalles, realizar búsquedas y gestionar contenido mediante el consumo de una API.
+This project consists of the development of a blog-style web application that allows users to view posts, check details, perform searches, and manage content by consuming an API.
 
-El proyecto se encuentra en una fase funcional, en la cual se han implementado las principales características requeridas.
+The project is currently in a functional stage, where the main required features have been implemented.
 
-## Objetivo
+## Objective
 
-Desarrollar una aplicación web dinámica aplicando los siguientes conceptos:
+To develop a dynamic web application by applying the following concepts:
 
-* Consumo de APIs (GET y POST)
-* Manipulación del DOM
-* Validación de formularios
-* Búsqueda y filtrado de información
-* Organización modular de JavaScript
-* Uso de Git y GitHub
+* API consumption (GET and POST)
+* DOM manipulation
+* Form validation
+* Search and filtering of information
+* Modular JavaScript organization
+* Use of Git and GitHub
 
-## Integrantes
+## Team Members
 
 * Mishell Ciprian 
 * Adriana Martínez 
 
-## Tecnologías utilizadas
+## Technologies Used
 
 * HTML
 * CSS
 * JavaScript
 
-### Detalle técnico adicional
+### Additional Technical Details
 
-Además de las tecnologías base, el proyecto hace uso de:
+In addition to the base technologies, the project uses:
 
-- DummyJSON API para la obtención de publicaciones
-- LocalStorage para almacenar publicaciones creadas por el usuario
-- JavaScript modular (ES Modules) para organizar la lógica del sistema
+- DummyJSON API to retrieve posts
+- LocalStorage to store user-created posts
 
-### Organización del código
 
-El proyecto se estructura de forma modular para separar responsabilidades:
+### Code Organization
 
-- `js/api/` → manejo de consumo de API
-- `js/modules/` → lógica principal (renderizado, filtros, formularios)
-- `js/utils/` → utilidades como validaciones
-- `pages/` → vistas adicionales del sitio
+The project is structured in a modular way to separate responsibilities:
 
-## Estructura del proyecto
+- `js/api/` → API consumption handling
+- `js/modules/` → main logic (rendering, filters, forms)
+- `js/utils/` → utilities such as validations
+- `pages/` → additional views of the site
+
+## Project Structure
 
 ```bash
 css/
@@ -56,49 +56,46 @@ README.md
 .gitignore
 ```
 
-## Funcionalidades esperadas
+## Expected Features
 
-* Listado de publicaciones
-* Vista de detalle de publicaciones
-* Creación de publicaciones
-* Búsqueda y filtrado
-* Navegación entre secciones
+* Post listing
+* Post detail view
+* Post creation
+* Search and filtering
+* Navigation between sections
 
-## Funcionalidades implementadas
+## Implemented Features
 
-Actualmente, el sistema cuenta con las siguientes funcionalidades:
+Currently, the system includes the following features:
 
-- Visualización de publicaciones desde una API externa
-- Creación de nuevas publicaciones mediante formulario
-- Almacenamiento local de publicaciones creadas
-- Vista de detalle para cada publicación (Read More)
-- Búsqueda por texto en publicaciones
-- Filtrado por autor
-- Filtrado por etiquetas
-- Paginación de resultados
-- Eliminación de publicaciones creadas localmente
-- Validaciones en formularios utilizando JavaScript
+- Display of posts from an external API
+- Creation of new posts through a form
+- Local storage of user-created posts
+- Detail view for each post (Read More)
+- Text-based search in posts
+- Filtering by author
+- Filtering by tags
+- Pagination of results
+- Deletion of locally created posts
+- Form validation using JavaScript
 
-## Estado del proyecto
+## GitHub Pages
 
-Finalizado
+[itsadrimartinezzz.github.io](https://itsadrimartinezzz.github.io/P1-BLOG/index.html)
 
-## Experiencia de usuario
+## Video
 
-El diseño de la aplicación busca ofrecer una experiencia clara, sencilla y ordenada. Se priorizó la facilidad de navegación entre secciones, permitiendo al usuario consultar publicaciones, filtrarlas y crear contenido sin dificultad.
+## User Experience
 
-Asimismo, se incorporaron validaciones y mensajes que guían al usuario durante la interacción con el sistema.
+The application design aims to provide a clear, simple, and organized experience. Ease of navigation between sections was prioritized, allowing users to browse posts, filter them, and create content without difficulty.
 
-## Decisiones técnicas
+Additionally, validations and feedback messages were included to guide users during their interaction with the system.
 
-Se decidió trabajar con JavaScript puro, sin el uso de frameworks, para reforzar los conceptos fundamentales del curso. El uso de LocalStorage permite simular persistencia de datos sin necesidad de un backend.
 
-Además, la estructura modular del código facilita la organización, mantenimiento y escalabilidad del proyecto.
+## Current Project Status
 
-## Estado actual del proyecto
+The project has reached a functional state that fulfills the main requirements, including API consumption, post creation, filtering, and navigation between views.
 
-El proyecto ha alcanzado un estado funcional que permite cumplir con los requerimientos principales, incluyendo consumo de API, creación de publicaciones, filtrado y navegación entre vistas.
+## Conclusion
 
-## Conclusión
-
-Este proyecto representa una aplicación práctica de los conocimientos adquiridos en el curso, integrando conceptos técnicos y buenas prácticas de desarrollo web. También permitió fortalecer el trabajo en equipo y la organización del código mediante el uso de Git.
+This project represents a practical application of the knowledge acquired during the course, integrating technical concepts and good web development practices. It also helped strengthen teamwork and code organization using Git.
