@@ -64,6 +64,21 @@ README.md
 * Búsqueda y filtrado
 * Navegación entre secciones
 
+## Funcionalidades implementadas
+
+Actualmente, el sistema cuenta con las siguientes funcionalidades:
+
+- Visualización de publicaciones desde una API externa
+- Creación de nuevas publicaciones mediante formulario
+- Almacenamiento local de publicaciones creadas
+- Vista de detalle para cada publicación (Read More)
+- Búsqueda por texto en publicaciones
+- Filtrado por autor
+- Filtrado por etiquetas
+- Paginación de resultados
+- Eliminación de publicaciones creadas localmente
+- Validaciones en formularios utilizando JavaScript
+
 ## Estado del proyecto
 
 En desarrollo.
