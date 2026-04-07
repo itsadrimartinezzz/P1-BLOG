@@ -40,3 +40,83 @@
     border-radius: 6px;
     cursor: pointer;
 }
+.post-user {
+  padding: 0 10px;
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+
+
+
+#filters {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px 0;
+  flex-wrap: wrap;
+}
+
+#filters input {
+  flex: 1;
+  min-width: 140px;
+  padding: 9px 14px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  background: #f5f5f5;
+  font-size: 13px;
+  font-family: inherit;
+  color: #333;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+#filters input:focus {
+  border-color: rgba(0,0,0,0.3);
+  background: white;
+}
+
+#filters input::placeholder {
+  color: #aaa;
+}
+
+#clear-filters {
+  padding: 9px 16px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  background: none;
+  font-size: 13px;
+  font-family: inherit;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#clear-filters:hover {
+  background: #f0f0f0;
+}
+
+#popular-tags {
+  display: flex;
+  gap: 6px;
+  padding: 10px 24px 16px;
+  flex-wrap: wrap;
+}
+
+.tag-pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: #666;
+  cursor: pointer;
+  background: #f5f5f5;
+  transition: all 0.12s;
+  user-select: none;
+}
+
+.tag-pill:hover,
+.tag-pill.active {
+  background: #222;
+  border-color: #222;
+  color: white;
+}

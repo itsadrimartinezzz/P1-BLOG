@@ -13,10 +13,11 @@ export function renderPosts(posts){
         const imageUrl=`https://picsum.photos/200/300?random=${post.id}`;
         
     
-        //se crea una tarjeta con titilo, resumen imagen y btn 
+        // tarjeta  con titulo resumen imagen y btn 
        card.innerHTML = `
   <img src="${imageUrl}" alt="post image">
   <h3>${post.title}</h3>
+  <p class="post-user">Usuario ${post.userId}</p>
   <p>${post.body.substring(0, 80)}...</p>
   <button data-id="${post.id}">Ver más</button>
 `;

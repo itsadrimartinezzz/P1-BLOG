@@ -22,7 +22,21 @@
         </div>  
     </nav>
 
-    
+    <!--Filtros -->
+    <div id="filters">
+  <input type="text" id="search-input" placeholder="Buscar...">
+  <input type="number" id="user-filter" placeholder="Usuario ID" min="1">
+  <input type="text" id="tag-filter" placeholder="Tag">
+  <button id="clear-filters">Limpiar</button>
+</div>
+
+<div id="popular-tags">
+  <span class="tag-pill active" data-tag="">Todos</span>
+  <span class="tag-pill" data-tag="history">History</span>
+  <span class="tag-pill" data-tag="crime">Crime</span>
+  <span class="tag-pill" data-tag="mystery">Mystery</span>
+  <span class="tag-pill" data-tag="love">Love</span>
+</div>
     <!-- Contenedor de posts -->
      <div id ="posts-container"></div>
 
