@@ -1,4 +1,5 @@
 import { savePost } from "../api/createApi.js";
+import { validatePost } from "../utils/validators.js";
 
 const form = document.getElementById("create-post-form");
 const titleInput = document.getElementById("title");
@@ -29,26 +30,12 @@ if (form) {
     const author = authorInput.value.trim();
     const tagsText = tagsInput.value.trim();
 
-    if (!title || !body || !author) {
-      showMessage("All fields are required.", "error");
-      return;
-    }
+    const error = validatePost(title, body, author);
 
-    if (title.length < 4) {
-      showMessage("Title must be at least 4 characters.", "error");
-      return;
-    }
-
-    if (body.length < 10) {
-      showMessage("Content must be at least 10 characters.", "error");
-      return;
-    }
-
-    if (author.length < 2) {
-      showMessage("Author must be at least 2 characters.", "error");
-      return;
-    }
-
+if (error) {
+  showMessage(error, "error");
+  return;
+}
     const tags = tagsText
       ? tagsText.split(",").map((tag) => tag.trim()).filter((tag) => tag !== "")
       : [];

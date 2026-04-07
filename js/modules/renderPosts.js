@@ -16,12 +16,12 @@ export function renderPosts(posts, container) {
       const title = post.title || "Untitled post";
       const body = post.body || post.content || "No content available.";
       const summary = body.length > 140 ? `${body.slice(0, 140)}...` : body;
-      const author =
-        post.author || (post.userId ? `User ${post.userId}` : "Unknown author");
+      const author = post.author || (post.userId ? `User ${post.userId}` : "Unknown author");
       const tags = Array.isArray(post.tags) ? post.tags : [];
 
       return `
         <article class="post-card">
+          <img src="https://picsum.photos/400/200?random=${post.id}" alt="${title}">
           <div class="post-card__content">
             <h2 class="post-card__title">${title}</h2>
             <p class="post-card__excerpt">${summary}</p>
