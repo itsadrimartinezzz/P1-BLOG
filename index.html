@@ -1,56 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
-    <title>Blog</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <title>BlogLab</title>
 </head>
 <body>
-    <!--Navbar-->
-    <nav class="navbar">
-        <div class="logo">BlogLab</div>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="logo-badge">B</div>
+      <div class="logo-text">
+        <span class="logo-title">BlogLab</span>
+        <span class="logo-subtitle">Creative Stories</span>
+      </div>
+    </div>
 
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="pages/create.html">Crear</a>
-            <a href="pages/about.html">About</a>
-        </div>  
-    </nav>
+    <div class="nav-links">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="pages/create.html">Crear</a>
+      <a href="pages/about.html">Explorar</a>
+    </div>
+  </nav>
 
-    <!--Filtros -->
-    <div id="filters">
-  <input type="text" id="search-input" placeholder="Buscar...">
-  <input type="number" id="user-filter" placeholder="Usuario ID" min="1">
-  <input type="text" id="tag-filter" placeholder="Tag">
-  <button id="clear-filters">Limpiar</button>
-</div>
+  <main class="page-shell">
+    <section class="hero-section">
+      <div class="hero-copy">
+        <span class="hero-label">BLOG MODERNO</span>
+        <h1>Descubre publicaciones, ideas y temas que valen la pena leer.</h1>
+        <p>
+          Explora artículos por búsqueda, autor o categoría en una experiencia más limpia,
+          visual y fácil de navegar.
+        </p>
 
-<div id="popular-tags">
-  <span class="tag-pill active" data-tag="">Todos</span>
-  <span class="tag-pill" data-tag="history">History</span>
-  <span class="tag-pill" data-tag="crime">Crime</span>
-  <span class="tag-pill" data-tag="mystery">Mystery</span>
-  <span class="tag-pill" data-tag="love">Love</span>
-</div>
-    <!-- Contenedor de posts -->
-     <div id ="posts-container"></div>
+        <div class="hero-actions">
+          <a href="#filters" class="hero-btn hero-btn-primary">Explorar posts</a>
+          <a href="pages/create.html" class="hero-btn hero-btn-secondary">Crear publicación</a>
+        </div>
+      </div>
 
-     <!--paginacion-->
-     <div id="pagination">
+      <div class="hero-card">
+        <p class="hero-card-label">Contenido destacado</p>
+        <h3>Diseño limpio, navegación clara y experiencia moderna.</h3>
+        <p>
+          Este blog está pensado para mostrar publicaciones de forma visual,
+          organizada y responsive.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-panel">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">Explorar contenido</span>
+          <h2>Publicaciones recientes</h2>
+        </div>
+        <p>Usa búsqueda, filtros y tags para encontrar contenido más rápido.</p>
+      </div>
+
+      <div id="filters">
+        <input type="text" id="search-input" placeholder="Buscar publicaciones..." />
+        <input type="number" id="user-filter" placeholder="Autor ID" min="1" />
+        <input type="text" id="tag-filter" placeholder="Tag" />
+        <button id="clear-filters">Limpiar</button>
+      </div>
+
+      <div id="popular-tags">
+        <span class="tag-pill active" data-tag="">Todos</span>
+        <span class="tag-pill" data-tag="history">History</span>
+        <span class="tag-pill" data-tag="crime">Crime</span>
+        <span class="tag-pill" data-tag="mystery">Mystery</span>
+        <span class="tag-pill" data-tag="love">Love</span>
+      </div>
+
+      <div id="posts-container"></div>
+
+      <div id="pagination">
         <button id="prev-btn">Anterior</button>
         <span id="page-number">1</span>
         <button id="next-btn">Siguiente</button>
-     </div>
+      </div>
+    </section>
+  </main>
 
-     <!--Script -->
-     <script type="module" src="js/app.js"></script>
-
-    
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
-

@@ -1,64 +1,285 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background-color: #f5f5f5;
-
+* {
+  box-sizing: border-box;
 }
 
-#posts-container{
-    display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-
+html {
+  scroll-behavior: smooth;
 }
 
-nav{
-    background: #333;
-    padding: 10px;
-    display: flex;
-    gap: 15px;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 25%),
+    radial-gradient(circle at top right, rgba(168, 85, 247, 0.08), transparent 20%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  min-height: 100vh;
 }
 
-nav a{
-    color: white;
-    text-decoration: none;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-nav a:hover {
-  text-decoration: underline;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #222;
-    padding: 15px 30px;
-
+.logo-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
 }
 
-.logo{
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-
+.logo-text {
+  display: flex;
+  flex-direction: column;
 }
 
+.logo-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+}
 
-.nav-links{
-    display: flex;
-    gap: 20px;
+.logo-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s ease;
-
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
 }
 
-.nav-links a:hover{
-    color: #007bff;
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.10);
+  color: white;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 32px auto 50px;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.hero-copy,
+.hero-card {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-copy {
+  padding: 42px;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(37, 99, 235, 0.88));
+  color: white;
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.18);
+}
+
+.hero-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-copy h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.hero-copy p {
+  margin: 0;
+  max-width: 640px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.hero-btn {
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.hero-btn-primary {
+  background: white;
+  color: #111827;
+}
+
+.hero-btn-secondary {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-card {
+  padding: 30px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.76));
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-card-label {
+  margin: 0 0 10px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.hero-card h3 {
+  margin: 0 0 12px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.hero-card p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.content-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+  padding: 26px 24px 10px;
+}
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #111827;
+}
+
+.section-heading p {
+  margin: 0;
+  max-width: 360px;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+#posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  padding: 10px 24px 28px;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 0 24px 30px;
+}
+
+#pagination button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+#pagination button:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+#page-number {
+  min-width: 38px;
+  text-align: center;
+  font-weight: bold;
+  color: #111827;
 }
