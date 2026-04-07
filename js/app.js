@@ -89,3 +89,9 @@ async function initDetail() {
 if (window.location.pathname.includes("detail.html")) {
   initDetail();
 }
+
+import { setupForm } from "./modules/form.js";
+
+if (window.location.pathname.includes("create.html")) {
+  setupForm();
+}
