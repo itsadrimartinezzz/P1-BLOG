@@ -14,7 +14,6 @@ To develop a dynamic web application by applying the following concepts:
 * DOM manipulation
 * Form validation
 * Search and filtering of information
-* Modular JavaScript organization
 * Use of Git and GitHub
 
 ## Team Members
@@ -81,9 +80,11 @@ Currently, the system includes the following features:
 
 ## GitHub Pages
 
-[itsadrimartinezzz.github.io](https://itsadrimartinezzz.github.io/P1-BLOG/index.html)
+https://itsadrimartinezzz.github.io/P1-BLOG/index.html
 
 ## Video
+
+https://youtu.be/7goInZaf1jA
 
 ## User Experience
 
