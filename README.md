@@ -80,7 +80,11 @@ Currently, the system includes the following features:
 - Deletion of locally created posts
 - Form validation using JavaScript
 
+## Limitations
 
+- Posts created are only stored locally (not persisted in API)
+- No user authentication system
+  
 ## Installation
 
 To run this project locally:
