@@ -86,11 +86,13 @@ To run this project locally:
 1. Clone the repository:
 ```bash
 git clone https://github.com/itsadrimartinezzz/P1-BLOG.git
+```
+
 
 ## GitHub Pages
 
 https://itsadrimartinezzz.github.io/P1-BLOG/index.html
-```
+
 
 
 ## Video
