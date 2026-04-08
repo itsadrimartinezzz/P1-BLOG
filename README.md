@@ -94,7 +94,14 @@ To run this project locally:
 ```bash
 git clone https://github.com/itsadrimartinezzz/P1-BLOG.git
 ```
+## Usage
 
+- View posts on the main page  
+- Use the search bar to find posts  
+- Filter posts by author or tags  
+- Click on "Read More" to see full details  
+- Create a new post using the form  
+- Delete posts created locally  
 
 ## GitHub Pages
 
