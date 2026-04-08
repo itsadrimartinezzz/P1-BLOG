@@ -23,11 +23,11 @@ To develop a dynamic web application by applying the following concepts:
 
 ## Technologies Used
 
-- HTML5 (semantic structure)
+- HTML5 
 - CSS3 (responsive design)
-- JavaScript (ES6+)
-- DummyJSON API (REST API consumption)
-- LocalStorage (client-side persistence)
+- JavaScript 
+- DummyJSON API 
+- LocalStorage 
 
 ### Additional Technical Details
 
