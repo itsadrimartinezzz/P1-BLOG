@@ -83,7 +83,7 @@ Currently, the system includes the following features:
 
 ## Limitations
 
-- Posts created are only stored locally (not persisted in API)
+- Posts created are only stored locally 
 - No user authentication system
   
 ## Installation
