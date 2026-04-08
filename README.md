@@ -78,9 +78,20 @@ Currently, the system includes the following features:
 - Deletion of locally created posts
 - Form validation using JavaScript
 
+
+## Installation
+
+To run this project locally:
+
+1. Clone the repository:
+```bash
+git clone https://github.com/itsadrimartinezzz/P1-BLOG.git
+
 ## GitHub Pages
 
 https://itsadrimartinezzz.github.io/P1-BLOG/index.html
+```
+
 
 ## Video
 
