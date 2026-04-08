@@ -35,6 +35,7 @@ In addition to the base technologies, the project uses:
 
 - DummyJSON API to retrieve posts
 - LocalStorage to store user-created posts
+- - Lorem Picsum to generate random images for posts
 
 
 ### Code Organization
